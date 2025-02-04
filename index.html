@@ -3,18 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Will You Be My Valentine?</title>
+  <title>Valentine's Day Trivia</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Will You Be My Valentine?</h1>
-    <img src="https://media.giphy.com/media/26xBI73gWquCBBCDe/giphy.gif" alt="Cute GIF" class="gif">
-    <p>Hey <span id="crushName">[Your Crush's Name]</span>,</p>
-    <p>I have a special question for you...</p>
-    <div class="buttons">
-      <button id="yesButton">Yes!</button>
-      <button id="noButton">No</button>
+    <div id="question1" class="question">
+      <h1>Will you be my valentine?</h1>
+      <div class="buttons">
+        <button id="yesButton1">Yes!</button>
+        <button id="noButton1">No</button>
+      </div>
+    </div>
+
+    <div id="question2" class="question hidden">
+      <h1>Which place you trying to go to?</h1>
+      <div class="buttons">
+        <button id="plaza">Plaza</button>
+        <button id="bed">Bed</button>
+        <button id="anywhere">Anywhere</button>
+      </div>
+    </div>
+
+    <div id="question3" class="question hidden">
+      <h1>Can you libre me am broke?</h1>
+      <div class="buttons">
+        <button id="yesButton3">Yes!</button>
+        <button id="noButton3">No</button>
+      </div>
+    </div>
+
+    <div id="finalScreen" class="hidden">
+      <h1>Good girll</h1>
+      <p>iloveyou😘</p>
     </div>
   </div>
   <script src="script.js"></script>

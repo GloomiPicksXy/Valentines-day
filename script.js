@@ -1,49 +1,60 @@
-const yesButton = document.getElementById('yesButton');
-const noButton = document.getElementById('noButton');
-const container = document.querySelector('.container');
+const question1 = document.getElementById('question1');
+const question2 = document.getElementById('question2');
+const question3 = document.getElementById('question3');
+const finalScreen = document.getElementById('finalScreen');
 
-const botToken = '7949262957:AAGhkb4KelBIZJcznmkEL3I7eYb4jd8g2u8';
-const chatId = '6432955886';
-const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+const yesButton1 = document.getElementById('yesButton1');
+const noButton1 = document.getElementById('noButton1');
 
-function sendToTelegram(message) {
-  fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      chat_id: chatId,
-      text: message,
-    }),
-  })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-}
+const plazaButton = document.getElementById('plaza');
+const bedButton = document.getElementById('bed');
+const anywhereButton = document.getElementById('anywhere');
 
-yesButton.addEventListener('click', () => {
-  container.innerHTML = `
-    <h1>Yay! You made my day lil broo! 💖</h1>
-    <p>lez go!</p>
-    <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" alt="Happy GIF" class="gif">
-  `;
-  sendToTelegram('They said YES! 🎉');
+const yesButton3 = document.getElementById('yesButton3');
+const noButton3 = document.getElementById('noButton3');
 
-  for (let i = 0; i < 100; i++) {
-    const confetti = document.createElement('div');
-    confetti.classList.add('confetti');
-    confetti.style.left = `${Math.random() * 100}vw`;
-    confetti.style.animationDelay = `${Math.random() * 2}s`;
-    container.appendChild(confetti);
-  }
+// Question 1: Will you be my valentine?
+yesButton1.addEventListener('click', () => {
+  question1.classList.add('hidden');
+  question2.classList.remove('hidden');
 });
 
-noButton.addEventListener('click', () => {
-  const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-  const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-  noButton.style.position = 'absolute';
-  noButton.style.left = `${x}px`;
-  noButton.style.top = `${y}px`;
-  yesButton.style.transform = 'scale(1.2)';
+noButton1.addEventListener('click', () => {
+  const x = Math.random() * (window.innerWidth - noButton1.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noButton1.offsetHeight);
+  noButton1.style.position = 'absolute';
+  noButton1.style.left = `${x}px`;
+  noButton1.style.top = `${y}px`;
+  yesButton1.style.transform = 'scale(1.2)';
+});
+
+// Question 2: Which place you trying to go to?
+plazaButton.addEventListener('click', () => {
+  question2.classList.add('hidden');
+  question3.classList.remove('hidden');
+});
+
+bedButton.addEventListener('click', () => {
+  question2.classList.add('hidden');
+  question3.classList.remove('hidden');
+});
+
+anywhereButton.addEventListener('click', () => {
+  question2.classList.add('hidden');
+  question3.classList.remove('hidden');
+});
+
+// Question 3: Can you libre me am broke?
+yesButton3.addEventListener('click', () => {
+  question3.classList.add('hidden');
+  finalScreen.classList.remove('hidden');
+});
+
+noButton3.addEventListener('click', () => {
+  const x = Math.random() * (window.innerWidth - noButton3.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noButton3.offsetHeight);
+  noButton3.style.position = 'absolute';
+  noButton3.style.left = `${x}px`;
+  noButton3.style.top = `${y}px`;
+  yesButton3.style.transform = 'scale(1.2)';
 });

@@ -4,10 +4,95 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Valentine's Day Trivia</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* CSS Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      max-width: 90%;
+      width: 400px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    #yesButton1, #yesButton3 {
+      background: #ff4d4d;
+      color: white;
+    }
+
+    #noButton1, #noButton3 {
+      background: #ffcccb;
+      color: #333;
+    }
+
+    #plaza, #bed, #anywhere {
+      background: #ff4d4d;
+      color: white;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ffcc00;
+      animation: confetti 2s ease-out;
+    }
+
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* Animation for growing button */
+    @keyframes grow {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.5); }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
+    <!-- Question 1 -->
     <div id="question1" class="question">
       <h1>Will you be my valentine?</h1>
       <div class="buttons">
@@ -16,6 +101,7 @@
       </div>
     </div>
 
+    <!-- Question 2 -->
     <div id="question2" class="question hidden">
       <h1>Which place you trying to go to?</h1>
       <div class="buttons">
@@ -25,6 +111,7 @@
       </div>
     </div>
 
+    <!-- Question 3 -->
     <div id="question3" class="question hidden">
       <h1>Can you libre me am broke?</h1>
       <div class="buttons">
@@ -33,11 +120,75 @@
       </div>
     </div>
 
+    <!-- Final Screen -->
     <div id="finalScreen" class="hidden">
-      <h1>Good girll</h1>
-      <p>iloveyou😘</p>
+      <h1>Yay! You made my day! 💖</h1>
+      <p>Let's make this Valentine's Day special!</p>
     </div>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    // JavaScript Code
+    const question1 = document.getElementById('question1');
+    const question2 = document.getElementById('question2');
+    const question3 = document.getElementById('question3');
+    const finalScreen = document.getElementById('finalScreen');
+
+    const yesButton1 = document.getElementById('yesButton1');
+    const noButton1 = document.getElementById('noButton1');
+
+    const plazaButton = document.getElementById('plaza');
+    const bedButton = document.getElementById('bed');
+    const anywhereButton = document.getElementById('anywhere');
+
+    const yesButton3 = document.getElementById('yesButton3');
+    const noButton3 = document.getElementById('noButton3');
+
+    // Question 1: Will you be my valentine?
+    yesButton1.addEventListener('click', () => {
+      question1.classList.add('hidden');
+      question2.classList.remove('hidden');
+    });
+
+    noButton1.addEventListener('click', () => {
+      const x = Math.random() * (window.innerWidth - noButton1.offsetWidth - 40); // Prevent going off-screen
+      const y = Math.random() * (window.innerHeight - noButton1.offsetHeight - 40);
+      noButton1.style.position = 'fixed';
+      noButton1.style.left = `${x}px`;
+      noButton1.style.top = `${y}px`;
+      yesButton1.style.animation = 'grow 0.5s forwards';
+    });
+
+    // Question 2: Which place you trying to go to?
+    plazaButton.addEventListener('click', () => {
+      question2.classList.add('hidden');
+      question3.classList.remove('hidden');
+    });
+
+    bedButton.addEventListener('click', () => {
+      question2.classList.add('hidden');
+      question3.classList.remove('hidden');
+    });
+
+    anywhereButton.addEventListener('click', () => {
+      question2.classList.add('hidden');
+      question3.classList.remove('hidden');
+    });
+
+    // Question 3: Can you libre me am broke?
+    yesButton3.addEventListener('click', () => {
+      question3.classList.add('hidden');
+      finalScreen.classList.remove('hidden');
+    });
+
+    noButton3.addEventListener('click', () => {
+      const x = Math.random() * (window.innerWidth - noButton3.offsetWidth - 40); // Prevent going off-screen
+      const y = Math.random() * (window.innerHeight - noButton3.offsetHeight - 40);
+      noButton3.style.position = 'fixed';
+      noButton3.style.left = `${x}px`;
+      noButton3.style.top = `${y}px`;
+      yesButton3.style.animation = 'grow 0.5s forwards';
+    });
+  </script>
 </body>
 </html>
